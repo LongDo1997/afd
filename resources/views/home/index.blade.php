@@ -3,446 +3,226 @@
 @section('description', $description)
 @section('keywords', $keywords)
 @section('css')
-@if(isset($data['banner']))
-@foreach($data['banner'] as $dt)
-<style type="text/css">
-.slider-item-bg-{{$dt->id}} {
-    background-image: url({{url($dt->images)}});
 
-};
-</style>
-@endforeach
-@endif
-@if(isset($data['product']))
-@foreach($data['product'] as $dt)
-<style type="text/css">
-.solutions-time-bg-{{$dt->id}} {
-    background-image: url({{url($dt->images)}});
-
-};
-</style>
-@endforeach
-@endif
 @stop()
 
 @section('main')
 @if(isset($data['banner']))
-
-<section class="hero-slider-area">
-        <div class="hero-slider-wrap owl-carousel owl-theme">
-        @foreach($data['banner'] as $dt)
-            <div class="slider-item slider-item-bg-{{$dt->id}}">
-                <div class="d-table">
-                    <div class="d-table-cell">
-                        <div class="container">
-                            <div class="row align-items-center">
-                                <div class="col-lg-9">
-                                    <div class="slider-text one">
-                                        <h1>{!!$dt->summary!!}</h1>
-                                        <p>{!!$dt->description!!}</p>
-                                        <div class="slider-btn">
-                                            <a class="default-btn" href="{{route('home.contact')}}">
-                                                Liên hệ
-                                            </a>
-                                            <a class="default-btn active" href="{{route('home.about')}}">
-                                                Tìm hiểu thêm
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="video-btn-animat one">
-                                        <a href="https://www.youtube.com/watch?v=sdpxddDzXfE"
-                                            class="video-btn popup-youtube">
-                                            <i class="bx bx-play"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+    <section id="dia-banner" class="dia-banner-section position-relative">
+    @foreach($data['banner'] as $dt)
+        <div class="banner-side-img banner-img1 position-absolute"><img src="{{url('public/site')}}/assets/imgs/ns2.png" alt=""></div>
+        <div class="banner-side-img banner-img2 position-absolute"><img src="{{$dt->images}}" alt=""></div>
+        <div class="container">
+            <div class="dia-banner-content dia-headline pera-content">
+                <span class="dia-banner-tag text-uppercase">Sứ mệnh của Lasadu</span>
+                <h1 class="cd-headline clip is-full-width">
+                    <span class="cd-words-wrapper">{!!$dt->summary!!}
+                        <!-- <span class="is-visible"></span> -->
+                        <!-- <span>Hệ thống Công nghệ thông tin</span>
+                        <span>Nguồn lực Công nghệ thông tin</span> -->
+                    </span>
+                </h1>
+                <p><i>"{!!$dt->description!!}"</i></p>
+                <!-- <div class="dia-banner-btn d-flex">
+                        <div class="dia-play-btn text-center d-inline-block">
+                            <a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image overlay-box"><i class="fas fa-play"></i></a>
                         </div>
-                    </div>
-                </div>
+                        <div class="dia-abt-btn text-center d-inline-block">
+                            <a href="#">About Our Company</a>
+                        </div>
+                    </div> -->
             </div>
-         @endforeach 
         </div>
+        <div class="banner-shape1 position-absolute"><img src="{{url('public/site')}}/assets/imgs/pls3.png" alt=""></div>
+        <div class="banner-shape2 position-absolute" data-parallax='{"y" : 100, "rotateY":500}'><img
+                src="{{url('public/site')}}/assets/imgs/ic_smart_home.png" alt=""></div>
+            <div class="banner-shape3 position-absolute" data-parallax='{"y" : 100, "rotateY":500}'><img
+                src="{{url('public/site')}}/assets/imgs/ic_fingerprint.png" alt=""></div>
+    @endforeach
     </section>
-    @endif
-
-    @if(isset($data['brand']))
-    <div class="partner-area bg-color-f9f9f9 ptb-100">
-        <div class="container">
-            <div class="row">
-                <div class="partner-slider-six owl-carousel owl-theme">
-                    @foreach($data['brand'] as $dt)
-                    <div class="partner-item">
-                        <a href="#">
-                            <img src="{{url($dt->images)}}" alt="Image">
-                        </a>
-                    </div>
-                   @endforeach
-                </div>
-            </div>
+@endif
+@if(isset($data['service']))
+<section id="dia-service" class="soft-m-feature-section">
+    <div class="container">
+        <div class="soft-m-section-title text-center soft-m-headline">
+            <span class=" text-uppercase">{{$data['cat_service']->meta_keyword}}</span>
+            <h2>{!!$data['cat_service']->meta_description!!}</h2>
         </div>
-    </div>
-    @endif
-    @if(isset($data['about']))
-    <section class="performance-area bg-none pb-70 mt-5">
-        <div class="container">
-            <div class="section-title">
-                <h2>{{$data['cat_about']->meta_keyword}}</h2>
-                <p>{!!$data['cat_about']->meta_description!!}</p>
-            </div>
-            <div class="row">
-                @foreach($data['about'] as $dt)
-                <div class="col-lg-4 col-sm-6" style="height:286px">
-                    <div class="single-security" style="height:90%">
-                        <i class="flaticon-website"></i>
-                        <h3>{{$dt->tittle}}</h3>
-                        <div style="height:90px">
-                        {!!$dt->summary!!}
-                        </div>
-                        <a href="{{route('home.about')}}" class="read-more">
-                            Xem thêm
-                        </a>
-                        <img src="{{url('public/site')}}/assets/img/shape/6.png" alt="Image">
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    @endif
-
-    @if(isset($data['aboutService']))
-
-    <section class="transform-area-five pb-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="transform-img">
-                        <img src="{{$data['cat_aboutService']->images}}" style="height:100%" alt="Image">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="transform-content  transform-content-five">
-                        <h2>{{$data['cat_aboutService']->meta_keyword}}</h2>
-                        <p>{!!$data['cat_aboutService']->meta_description!!}</p>
-                        @foreach($data['aboutService'] as $dt)
-                        <div class="skill-bar" data-percentage="{{$dt->summary}}%">
-                            <h4 class="progress-title-holder">
-                                <span class="progress-title">{{$dt->tittle}}</span>
-                                <span class="progress-number-wrapper">
-                                    <span class="progress-number-mark">
-                                        <span class="percent"></span>
-                                        <span class="down-arrow"></span>
-                                    </span>
-                                </span>
-                            </h4>
-                            <div class="progress-content-outter">
-                                <div class="progress-content"></div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    @endif
-
-    <!-- <section class="pricing-area">
-        <div class="container">
-            <div class="section-title">
-                <h2>Buy Our Plans & Packages</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus quam neque quibusdam corrupti
-                    aspernatur corporis alias nisi dolorum expedita veritatis voluptates minima.</p>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single-pricing">
-                        <div class="pricing-content">
-                            <h3>One Time</h3>
-                            <h1>Free</h1>
-                        </div>
-                        <ul>
-                            <li>
-                                <i class="bx bx-check"></i>
-                                The Departure Of The Expect
-                            </li>
-                            <li>
-                                <i class="bx bx-check"></i>
-                                Remote Administrator
-                            </li>
-                            <li>
-                                <i class="bx bx-check"></i>
-                                Configure Software
-                            </li>
-                            <li>
-                                <span>
-                                    <i class="bx bx-x"></i>
-                                    Special Application
-                                </span>
-                            </li>
-                            <li>
-                                <span>
-                                    <i class="bx bx-x"></i>
-                                    24/7 Support
-                                </span>
-                            </li>
-                        </ul>
-                        <a href="#" class="default-btn">
-                            Order Now
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single-pricing active">
-                        <div class="pricing-content">
-                            <h3>Business</h3>
-                            <h1>$70 <sub>/ per month</sub></h1>
-                        </div>
-                        <ul>
-                            <li>
-                                <i class="bx bx-check"></i>
-                                The Departure Of The Expect
-                            </li>
-                            <li>
-                                <i class="bx bx-check"></i>
-                                Remote Administrator
-                            </li>
-                            <li>
-                                <i class="bx bx-check"></i>
-                                Configure Software
-                            </li>
-                            <li>
-                                <i class="bx bx-check"></i>
-                                Special Application
-                            </li>
-                            <li>
-                                <span>
-                                    <i class="bx bx-x"></i>
-                                    24/7 Support
-                                </span>
-                            </li>
-                        </ul>
-                        <a href="#" class="default-btn">
-                            Order Now
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 offset-sm-3 offset-lg-0">
-                    <div class="single-pricing">
-                        <div class="pricing-content">
-                            <h3>Exclusive</h3>
-                            <h1>$120 <sub>/ per month</sub></h1>
-                        </div>
-                        <ul>
-                            <li>
-                                <i class="bx bx-check"></i>
-                                The Departure Of The Expect
-                            </li>
-                            <li>
-                                <i class="bx bx-check"></i>
-                                Remote Administrator
-                            </li>
-                            <li>
-                                <i class="bx bx-check"></i>
-                                Configure Software
-                            </li>
-                            <li>
-                                <i class="bx bx-check"></i>
-                                Special Application
-                            </li>
-                            <li>
-                                <i class="bx bx-check"></i>
-                                24/7 Support
-                            </li>
-                        </ul>
-                        <a href="#" class="default-btn">
-                            Order Now
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-
-    <!-- <section class="choose-area-four ptb-100">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="choose-img">
-                        <img src="{{url('public/site')}}/assets/img/choose-img.png" alt="Image">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="choose-wrap p-0">
-                        <h2>Why Choose Us</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-                            viverra maecenas accumsan lacus vel.</p>
-                        <ul class="mt-30">
-                            <li>
-                                <i class="bx bx-check"></i>
-                                Extemly low response time at all time
-                            </li>
-                            <li>
-                                <i class="bx bx-check"></i>
-                                We are always ready for your growth
-                            </li>
-                            <li>
-                                <i class="bx bx-check"></i>
-                                We understand security and compliance
-                            </li>
-                        </ul>
-                        <a href="#" class="default-btn mt-30">
-                            Know Details
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    @if(isset($data['staff']))
-    <section class="team-area pt-30 pb-70">
-        <div class="container">
-            <div class="section-title">
-                <h2>{{$data['cat_staff']->meta_keyword}}</h2>
-                <p>{!!$data['cat_staff']->meta_description!!}</p>
-            </div>
-            <div class="row">
-                @foreach($data['staff'] as $dt)
-                <?php 
-                    $accs = explode(' end_Of_The_Link, ',$dt->summary);
-                    $fblink= !empty($accs[0])?substr($accs[0],strpos($accs[0],'Facebook: ')+10):"";
-                    $instalink= !empty($accs[1])?substr($accs[1],strpos($accs[1],'Instagram: ')+11):"";
-                    $twiterlink= !empty($accs[2])?substr($accs[2],strpos($accs[2],'Twiter: ')+8):"";
-                    $anotherlink= !empty($accs[3])?substr($accs[3],strpos($accs[3],'Another: ')+9):"";
-                ?>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-team">
-                        <div class="image">
-                            <img src="{{url($dt->images)}}" alt="image">
-                            <ul class="social">
-                                <li>
-                                    <a href="{{$fblink}}" target="_blank">
-                                        <i class="bx bxl-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{$twiterlink}}" target="_blank">
-                                        <i class="bx bxl-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{$anotherlink}}" target="_blank">
-                                        <i class="bx bxl-linkedin"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{$instalink}}" target="_blank">
-                                        <i class="bx bxl-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="content">
-                            <h3>{{$dt->tittle}}</h3>
-                            <span>{{$dt->description}}</span>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    @endif
-    @if(isset($data['product']))
-
-    <section class="project-area pb-100">
-        <div class="container-fluid p-0">
-            <div class="section-title">
-                <h2>{{$data['cat_product']->meta_keyword}}</h2>
-                <p>{!!$data['cat_product']->meta_description!!}</p>
-            </div>\
-            <div class="row">
-
-                <div class="solutions-wrap owl-carousel owl-theme">
-                @foreach($data['product'] as $dt)
-
-                    <div class="single-solutions solutions-time-bg-{{$dt->id}}">
-                        <div class="solutions-content">
-                            <h3>{{$dt->tittle}}</h3>
-                            <p>{!!$dt->summary!!}</p>
-                            <a href="{{route('home.productDetail',$dt->slug)}}" class="read-more">
-                                Xem thêm
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
-                   
-                </div>
-            </div>
-        </div>
-    </section>
-    @endif
-  
-
-    @if(isset($data['client']))
-    <section class="client-area ptb-100">
-        <div class="container">
-            <div class="section-title white-title">
-                <h2>{{$data['cat_client']->meta_keyword}}</h2>
-                <p>{!!$data['cat_client']->meta_description!!}</p>
-            </div>
-            <div class="client-wrap owl-carousel owl-theme">
-                @foreach($data['client'] as $dt)
-                <div class="single-client">
-                    <i class="quotes bx bxs-quote-alt-left"></i>
-                    <p>{!!$dt->description!!}</p>
-                    <div class="client-img">
-                        <img src="{{url($dt->images)}}" style="width:70px;height:70px"alt="Image">
-                        <h3>{{$dt->tittle}}</h3>
-                        <span>{{$dt->summary}}</span>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    @endif
-    @if(isset($data['blog']))
-    <section class="blog-area pt-100 pb-70">
-        <div class="container">
-            <div class="section-title">
-                <h2>{{$data['cat_blog']->meta_keyword}}</h2>
-                <p>{!!$data['cat_blog']->meta_description!!}</p>
-            </div>
-            <div class="row">
-            @foreach($data['blog'] as $dt)
+        <div class="soft-m-feature-content">
+            <div class="row justify-content-center">
+            @foreach($data['service'] as $dt)
                 <div class="col-lg-4 col-md-6">
-                    <div class="single-blog">
-                        <img src="{{url($dt->images)}}" style="width:100%;height:374px" alt="Image">
-                        <span>{{$dt->meta_keyword}}</span>
-                        <div class="blog-content">
-                            <div class="date">
-                                <i class="bx bx-calendar"></i>
-                                {{date('d-m-Y',strtotime($dt->created_at))}}
+                    <div class="soft-m-feature-inner position-relative wow fadeFromUp" data-wow-delay="100ms" data-wow-duration="1500ms">
+                        <div class="soft-m-inner-icon">
+                            <div class="soft-m-feature-icon text-center">
+                                <i class="fas fa-users"></i>
                             </div>
-                            <h3>
-                                <a href="{{route('home.blogDetail',$dt->slug)}}">{{$dt->tittle}}</a>
-                            </h3>
-                            <a href="{{route('home.blogDetail',$dt->slug)}}" class="read-more mt-use">
-                                Xem thêm
-                            </a>
+                        </div>
+                        <div class="soft-m-feature-box">
+                            <div class="soft-m-feature-text soft-m-headline pera-content">
+                                <h3><a href="#">{{$dt->tittle}}</a></h3>
+                                <p>{!!$dt->summary!!}</p>
+                                <a class="soft-f-more" href="#">Chi tiết</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             @endforeach
             </div>
         </div>
+    </div>
+</section>
+@endif
+@if(isset($data['aboutService']))
+<section id="dia-exp" class="dia-exp-section">
+    <div class="container">
+        <div class="dia-exp-content">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 wow fadeFromRight" data-wow-delay="300ms" data-wow-duration="1500ms">
+                    <div class="dio-exp-text-area">
+                        <div class="dia-exp-text">
+                            <div class="dia-about-title-text">
+                                <div class="dia-section-title text-left text-capitalize dia-headline">
+                                    <span class=" text-uppercase">{{$data['cat_aboutService']->meta_keyword}}</span>
+                                    <h2>{!!$data['cat_aboutService']->meta_description!!}</h2>
+                                </div>
+                            </div>
+                        </div>
+                        @foreach($data['aboutService'] as $dt)
+                        <div class="skill-progress-bar">
+                            <div class="skill-set-percent dio-headline">
+                                <h4>{{$dt->tittle}}</h4>
+                                <div class="progress">
+                                    <div class="progress-bar" data-percent="{!!$dt->summary!!}"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- <div class="dia-exp-btn text-center">
+                            <a href="#">Our Team</a>
+                        </div> -->
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 wow fadeFromLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                    <div class="dia-exp-img text-center position-relative">
+                        <img src="{{url('public/site')}}/assets/imgs/rating.svg" alt="">
+                        <div class="ab-shape1 position-absolute" data-parallax='{"x" : -30}'> <img src="{{url('public/site')}}/assets/imgs/as1.png" alt=""></div>
+                        <div class="ab-shape2 position-absolute" data-parallax='{"x" : 30}'> <img src="{{url('public/site')}}/assets/imgs/as1.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
+@if(isset($data['about']))
+<section id="dia-about" class="dia-fun-fact-section position-relative">
+        <span class="dia-about-bg1 position-absolute"><img src="{{url('public/site')}}/assets/imgs/blg-shape1.png" alt=""></span>
+        <span class="dia-about-bg2 position-absolute"><img src="{{url('public/site')}}/assets/imgs/blg-shape2.png" alt=""></span>
+        <div class="container">
+            <div class="dia-section-title text-center text-capitalize dia-headline">
+                <span class=" text-uppercase">{{$data['cat_about']->meta_keyword}}</span>
+                <h2>{!!$data['cat_about']->meta_description!!}</h2>
+            </div>
+            <div class="dia-fun-fact-content">
+                <div class="dia-fun-fact-counter">
+                    <div class="row">
+                    @foreach($data['about'] as $dt)
+                        <div class="col-lg-4 col-md-4">
+                            <div class="dia-fun-fact-item dia-headline pera-content text-center">
+                                <span class="fun-fact-tag text-uppercase">{{$dt->tittle}}</span>
+                                <div class="fun-fact-number d-flex">
+                                    <h3 class="odometer" data-count="{!!$dt->summary!!}">0</h3><span>+</span>
+                                </div>
+                                <p>{!!$dt->description!!}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    @endif
+
+@endif
+@if(isset($data['product']))
+<section id="dia-portfolio" class="dia-portfolio-section">
+    <div class="container">
+        <div class="dia-section-title text-center text-capitalize dia-headline">
+            <span class="text-uppercase">{{$data['cat_product']->meta_keyword}}</span>
+            <h2>{!!$data['cat_product']->meta_description!!}</h2>
+        </div>
+    </div>
+    <div class="dia-portfolio-content">
+        <div id="dia-portfolio-slider" class="dia-portfolio-slide-area owl-carousel">
+        @foreach($data['product'] as $dt)
+        
+            <div class="dia-portfolio-img-text">
+                <div class="dia-portfolio-img">
+                    <img src="{{$dt->images}}" alt="">
+                </div>
+                <div class="dia-portfolio-text dia-headline text-center">
+                    <h3><a href="#">{{$dt->tittle}}</a></h3>
+                    <span>{!!$dt->summary!!} </span>
+                </div>
+            </div>
+        @endforeach
+        </div>
+        <!-- <div class="dia-port-more text-center">
+            <a class="d-block text-center" href="#">View All</a>
+        </div> -->
+    </div>
+</section>
+
+@endif
+
+@if(isset($data['staff']))
+<section id="dia-team" class="dia-team-section">
+    <div class="container">
+        <div class="dia-section-title text-center text-capitalize pera-content dia-headline">
+            <span>{{$data['cat_staff']->meta_keyword}}</span>
+            <h2>{!!$data['cat_staff']->meta_description!!}</h2>
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p> -->
+        </div>
+        <div id="dia-team-slide" class="dia-team-content owl-carousel">
+        @foreach($data['staff'] as $dt)
+        <?php 
+            $accs = explode(' end_Of_The_Link, ',$dt->summary);
+            $fblink= !empty($accs[0])?substr($accs[0],strpos($accs[0],'Facebook: ')+10):"";
+            $instalink= !empty($accs[1])?substr($accs[1],strpos($accs[1],'Instagram: ')+11):"";
+            $twiterlink= !empty($accs[2])?substr($accs[2],strpos($accs[2],'Twiter: ')+8):"";
+            $anotherlink= !empty($accs[3])?substr($accs[3],strpos($accs[3],'Another: ')+9):"";
+        ?>
+            <div class="dia-team-pic-text wow fadeFromLeft" data-wow-delay="300ms" data-wow-duration="1500ms">
+                <div class="dia-team-img position-relative">
+                    <div class="team-mem-img-ei text-center position-relative">
+                        <img src="{{url($dt->images)}}" alt="">
+                        <span class="mshape-bg shape-bg1"><img src="{{url('public/site')}}/assets/imgs/msbg1.png"
+                                alt=""></span>
+                        <span class="mshape-bg shape-bg2"><img src="{{url('public/site')}}/assets/imgs/msbg2.png"
+                                alt=""></span>
+                    </div>
+                    <div class="dia-team-social">
+                        <a href="{{$fblink}}"><i class="fab fa-facebook-f "></i></a>
+                        <a href="{{$anotherlink}}"><i class="fab fa-behance"></i></a>
+                        <a href="{{$twiterlink}}"><i class="fab fa-linkedin"></i></a>
+                        <a href="{{$instalink}}"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="dia-team-text dia-headline text-center pera-content">
+                    <h3><a href="#">{{$dt->tittle}}</a></h3>
+                    <p>{{$dt->description}}</p>
+                </div>
+            </div>
+        @endforeach 
+        </div>
+    </div>
+</section>
+
+@endif
+    
+  
+
+   
 @stop()

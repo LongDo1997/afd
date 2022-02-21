@@ -19,14 +19,8 @@ class HomeController extends Controller
         foreach(Category::get() as $cat){
             if($cat->type==1&&$cat->status==1){
                 $data[$cat->key_name] = Content::query()->where('cat_id',$cat->id)->get();
-                if($cat->key_name=='staff'){
-                    $data[$cat->key_name] = Content::query()->where('cat_id',$cat->id)->paginate(4);
-                }
-                if($cat->key_name=='blog'){
-                    $data[$cat->key_name] = Content::query()->where('cat_id',$cat->id)->orderby('created_at','desc')->paginate(3);
-                }
-                if($cat->key_name=='about'){
-                    $data[$cat->key_name] = Content::query()->where('cat_id',$cat->id)->paginate(6);
+                if($cat->key_name=='banner'){
+                    $data[$cat->key_name] = Content::query()->where('cat_id',$cat->id)->paginate(1);
                 }
             }
             if($cat->type==2&&$cat->status==1){
@@ -35,7 +29,7 @@ class HomeController extends Controller
             $data['cat_'.$cat->key_name]=Category::query()->where('id',$cat->id)->first();
         }
         if(!empty($data)){
-            $title="AFD- Trung tâm công nghệ thông tin chuyên nghiệp";
+            $title="LSD - Technology Center";
             $keywords="Giải pháp phần mềm, Phần mềm quản lý, gia công phần mềm";
             $description="Giải pháp phần mềm, Phần mềm quản lý, gia công phần mềm";
             return view('home.index',compact('data','keywords','description','title'));

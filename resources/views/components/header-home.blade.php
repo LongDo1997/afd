@@ -23,45 +23,23 @@ if(isset($mainContact)){
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link rel="stylesheet" href="{{url('public/site')}}/assets/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="{{url('public/site')}}/assets/css/owl.theme.default.min.css">
-
-    <link rel="stylesheet" href="{{url('public/site')}}/assets/css/owl.carousel.min.css">
-
-    <link rel="stylesheet" href="{{url('public/site')}}/assets/css/magnific-popup.min.css">
-
-    <link rel="stylesheet" href="{{url('public/site')}}/assets/css/animate.min.css">
-
-    <link rel="stylesheet" href="{{url('public/site')}}/assets/css/boxicons.min.css">
-
-    <link rel="stylesheet" href="{{url('public/site')}}/assets/css/flaticon.css">
-
-    <link rel="stylesheet" href="{{url('public/site')}}/assets/css/meanmenu.min.css">
-
-    <link rel="stylesheet" href="{{url('public/site')}}/assets/css/nice-select.min.css">
-
-    <link rel="stylesheet" href="{{url('public/site')}}/assets/css/odometer.min.css">
-
+    <link rel="shortcut icon" href="assets/imgs/logo.png" type="image/x-icon">
+    <link rel="icon" href="{{url('public/site')}}/assets/imgs/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{url('public/site')}}/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url('public/site')}}/assets/css/fontawesome-all.css">
+    <link rel="stylesheet" href="{{url('public/site')}}/assets/css/animate.css">
+    <link rel="stylesheet" href="{{url('public/site')}}/assets/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="{{url('public/site')}}/assets/css/odometer-theme-default.css">
+    <link rel="stylesheet" href="{{url('public/site')}}/assets/css/owl.carousel.css">
     <link rel="stylesheet" href="{{url('public/site')}}/assets/css/style.css">
-
-    <link rel="stylesheet" href="{{url('public/site')}}/assets/css/responsive.css">
-
-    <link rel="icon" type="image/png" href="{{url('public/site')}}/assets/img/favicon.png">
     @yield('css')
-    <title>AFD - Công ty hỗ trợ dịch vụ công nghệ thông tin chuyên nghiệp</title>
 </head>
 
-<body>
-
-    <div class="loader-wrapper">
-        <div class="loader"></div>
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div>
-    </div>
+<body class="dia-home">
 
 
+<!-- 
     <header class="header-area ">
         <div class="top-header-area">
             <div class="container-fluid">
@@ -109,45 +87,65 @@ if(isset($mainContact)){
                     @endif
                 </div>
             </div>
-        </div>
-
-        <div class="nav-area">
-            <div class="navbar-area">
-
-                <div class="mobile-nav">
-                    <a href="index-2.html" class="logo">
-                        <img src="{{url('public/uploads')}}/logo.png"  width="130px" height = "100px" alt="Logo">
-                    </a>
+        </div> -->
+    <div id="preloader" class="dia-preloader"></div>
+    <div class="up">
+        <a href="#" id="scrollup" class="dia-scrollup text-center"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <!-- Start of header section
+        ============================================= -->
+    <header id="dia-header" class="dia-main-header">
+        <div class="container">
+            <div class="dia-main-header-content clearfix">
+                <div class="dia-logo float-left">
+                    <a href="#"><img src="{{url('public/site')}}/assets/imgs/logo.png"  width="130px" height = "100px" alt=""></a>
+                    <!-- <div class="straight-line"></div>
+                    <div class="company-desc">
+                        <div class="txt-company-slogan">All For Inovation</div>
+                        <div class="txt-company-name">AFI Technology ,.JSC</div>
+                    </div> -->
                 </div>
-
-                <div class="main-nav">
-                    <nav class="navbar navbar-expand-md">
-                        <div class="container-fluid">
-                            <a class="navbar-brand" href="index-2.html">
-                                <img src="{{url('public/uploads')}}/logo.png" width="130px" height = "100px" alt="Logo">
-                            </a>
-                            <div class="collapse navbar-collapse mean-menu">
-                                <ul class="navbar-nav m-auto">
-                                    <li class="nav-item">
-                                        <a href="{{route('home.index')}}" class="nav-link {{Route::current()->getName()=='home.index'?'active':''}}">
-                                            Trang chủ
-                                        </a>
-                                     
-                                    </li>
-                                    @foreach($category as $menu)
-                                    <li class="nav-item">
-                                        <a href="{{route($menu->action_name)}}" class="nav-link {{strpos(Route::current()->getName(),$menu->key_name)!=false?'active':''}}">{{$menu->name}}</a>
-                                    </li>
-                                    @endforeach
-                                </ul>
-
-                                
-
-                            </div>
-                        </div>
+                <div class="dia-main-menu-item float-right">
+                    <nav class="dia-main-navigation  clearfix ul-li">
+                        <ul id="main-nav" class="navbar-nav text-capitalize clearfix">
+                            <li> <a href="#" class="text-uppercase">Trang chủ</a></li>
+                            <li><a href="#dia-service" class="text-uppercase">Dịch vụ</a></li>
+                            <li><a href="#dia-about" class="text-uppercase">Về chúng tôi</a></li>
+                            <li><a href="#dia-portfolio" class="text-uppercase">Sản phẩm</a></li>
+                            <li><a href="#dia-team" class="text-uppercase">Tổ chức</a> </li>
+                            <li><a href="#it-up-footer" class="text-uppercase">Liên hệ</a> </li>
+                        </ul>
                     </nav>
                 </div>
             </div>
+            <!-- /desktop menu -->
+            <div class="dia-mobile_menu relative-position">
+                <div class="dia-mobile_menu_button dia-open_mobile_menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="dia-mobile_menu_wrap">
+                    <div class="mobile_menu_overlay dia-open_mobile_menu"></div>
+                    <div class="dia-mobile_menu_content">
+                        <div class="dia-mobile_menu_close dia-open_mobile_menu">
+                            <i class="far fa-times-circle"></i>
+                        </div>
+                        <div class="m-brand-logo text-center">
+                            <a href="!#"><img src="{{url('public/site')}}/assets/imgs/logo.png" alt=""></a>
+                        </div>
+                        <nav class="dia-mobile-main-navigation  clearfix ul-li">
+                            <ul id="m-main-nav" class="navbar-nav text-capitalize clearfix">
+                                <li> <a href="#" class="text-uppercase">Trang chủ</a></li>
+                                <li><a href="#dia-service" class="text-uppercase">Dịch vụ</a></li>
+                                <li><a href="#dia-about" class="text-uppercase">Về chúng tôi</a></li>
+                                <li><a href="#dia-portfolio" class="text-uppercase">Sản phẩm</a></li>
+                                <li><a href="#dia-team" class="text-uppercase">Tổ chức</a> </li>
+                                <li><a href="#it-up-footer" class="text-uppercase">Liên hệ</a> </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!-- /mobile-menu -->
+            </div>
         </div>
-
     </header>
+    

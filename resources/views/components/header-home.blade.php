@@ -98,11 +98,11 @@ if(isset($mainContact)){
         <div class="container">
             <div class="dia-main-header-content clearfix">
                 <div class="dia-logo float-left">
-                    <a href="#"><img src="{{url('public/site')}}/assets/imgs/logo.png"  width="130px" height = "100px" alt=""></a>
+                    <a href="#"><img src="{{url('public/site')}}/assets/imgs/logo.svg"  width="130px" height = "100px" alt=""></a>
                     <div class="straight-line"></div>
                     <div class="company-desc">
-                        <div class="txt-company-slogan">All For Inovation</div>
-                        <div class="txt-company-name">LSD TECHNOLOGY ,.JSC</div>
+                        <div class="txt-company-slogan"></div>
+                        <div class="txt-company-name" >LSD TECHNOLOGY ,.JSC</div>
                     </div>
                 </div>
                 <div class="dia-main-menu-item float-right">

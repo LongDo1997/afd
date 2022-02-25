@@ -20,7 +20,7 @@ if(isset($mainContact)){
                             <div class="it-up-footer-widget headline-1 pera-content">
                                 <div class="it-up-footer-logo-widget it-up-headline pera-content">
                                     <div class="it-up-footer-logo pb-0">
-                                        <a href="#"><img src="{{url('public/site')}}/assets/imgs/logo-white.png" alt=""></a>
+                                        <a href="#"><img src="{{url('public/site')}}/assets/imgs/logo-white.svg" alt=""></a>
                                     </div>
                                 </div>
                             </div>

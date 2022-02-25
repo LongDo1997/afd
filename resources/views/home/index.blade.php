@@ -14,7 +14,7 @@
         <div class="banner-side-img banner-img2 position-absolute"><img src="{{$dt->images}}" alt=""></div>
         <div class="container">
             <div class="dia-banner-content dia-headline pera-content">
-                <span class="dia-banner-tag text-uppercase">Sứ mệnh của Lasadu</span>
+                <span class="dia-banner-tag text-uppercase">Sứ mệnh của LSD</span>
                 <h1 class="cd-headline clip is-full-width">{!!$dt->summary!!}
                     <!-- <span class="cd-words-wrapper"> -->
                         <!-- <span class="is-visible"></span> -->

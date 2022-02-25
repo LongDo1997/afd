@@ -24,8 +24,8 @@ if(isset($mainContact)){
     <meta name="keywords" content="@yield('keywords')">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{{url('public/site')}}/assets/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="assets/imgs/logo.png" type="image/x-icon">
-    <link rel="icon" href="{{url('public/site')}}/assets/imgs/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{url('public/site')}}/assets/imgs/logo-brand.png" type="image/x-icon">
+    <link rel="icon" href="{{url('public/site')}}/assets/imgs/logo-brand.png" type="image/x-icon">
     <link rel="stylesheet" href="{{url('public/site')}}/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{url('public/site')}}/assets/css/fontawesome-all.css">
     <link rel="stylesheet" href="{{url('public/site')}}/assets/css/animate.css">
@@ -99,11 +99,11 @@ if(isset($mainContact)){
             <div class="dia-main-header-content clearfix">
                 <div class="dia-logo float-left">
                     <a href="#"><img src="{{url('public/site')}}/assets/imgs/logo.png"  width="130px" height = "100px" alt=""></a>
-                    <!-- <div class="straight-line"></div>
+                    <div class="straight-line"></div>
                     <div class="company-desc">
                         <div class="txt-company-slogan">All For Inovation</div>
-                        <div class="txt-company-name">AFI Technology ,.JSC</div>
-                    </div> -->
+                        <div class="txt-company-name">LSD TECHNOLOGY ,.JSC</div>
+                    </div>
                 </div>
                 <div class="dia-main-menu-item float-right">
                     <nav class="dia-main-navigation  clearfix ul-li">

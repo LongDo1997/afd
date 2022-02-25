@@ -24,7 +24,7 @@ class ContentRequest extends FormRequest
     public function rules()
     {
         return [
-            'tittle'=>'required|unique:contents,tittle,'.request()->id,
+            'tittle'=>'required:contents',
             'slug'=>'required|unique:contents,slug,'.request()->id,
             'description'=>'required',
             'summary'=>'required',

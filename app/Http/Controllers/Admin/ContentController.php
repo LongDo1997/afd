@@ -87,6 +87,9 @@ class ContentController extends Controller
         if($data->get_cat->key_name=='contact'){
             return view('admin.content.contactUpdate',compact('data','cat'));
         }
+        if($data->get_cat->key_name=='service'){
+            return view('admin.content.serviceUpdate',compact('data','cat'));
+        }
         if($data){
             return view('admin.content.update',compact('data','cat'));
         }
@@ -123,6 +126,10 @@ class ContentController extends Controller
             $continfo.="Address: ".$request->address." end_of_contact, ";
             $continfo.="Map: ".$request->map." end_of_contact, ";
             $request->merge(['description'=>$continfo]);
+        }
+        if($content->get_cat->key_name=='service'){
+            $icon="Icon-code: ".$request->icon." end_Of_The_Link, ";
+            $request->merge(['summary'=>$icon.$request->summary]);
         }
         $request->merge(['status'=>$request->status=='on'?1:0]);
         if($request->has('my_file')){

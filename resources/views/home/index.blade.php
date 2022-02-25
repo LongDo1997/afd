@@ -15,12 +15,12 @@
         <div class="container">
             <div class="dia-banner-content dia-headline pera-content">
                 <span class="dia-banner-tag text-uppercase">Sứ mệnh của Lasadu</span>
-                <h1 class="cd-headline clip is-full-width">
-                    <span class="cd-words-wrapper">{!!$dt->summary!!}
+                <h1 class="cd-headline clip is-full-width">{!!$dt->summary!!}
+                    <!-- <span class="cd-words-wrapper"> -->
                         <!-- <span class="is-visible"></span> -->
                         <!-- <span>Hệ thống Công nghệ thông tin</span>
                         <span>Nguồn lực Công nghệ thông tin</span> -->
-                    </span>
+                    <!-- </span> -->
                 </h1>
                 <p><i>"{!!$dt->description!!}"</i></p>
                 <!-- <div class="dia-banner-btn d-flex">
@@ -51,17 +51,28 @@
         <div class="soft-m-feature-content">
             <div class="row justify-content-center">
             @foreach($data['service'] as $dt)
+            <?php 
+                $pos = strpos($dt->summary, ' end_Of_The_Link, ');
+                if($pos==false){
+                    $summarytitle= $dt->summary;
+                    $icon="";
+                }else{
+                    $summary = explode(' end_Of_The_Link, ',$dt->summary);
+                    $icon= !empty($summary[0])?substr($summary[0],strpos($summary[0],'Icon-code: ')+11):"";
+                    $summarytitle= !empty($summary[1])?$summary[1]:"";
+                }
+            ?>
                 <div class="col-lg-4 col-md-6">
                     <div class="soft-m-feature-inner position-relative wow fadeFromUp" data-wow-delay="100ms" data-wow-duration="1500ms">
                         <div class="soft-m-inner-icon">
                             <div class="soft-m-feature-icon text-center">
-                                <i class="fas fa-users"></i>
+                                <i class="{{$icon}}"></i>
                             </div>
                         </div>
                         <div class="soft-m-feature-box">
                             <div class="soft-m-feature-text soft-m-headline pera-content">
                                 <h3><a href="#">{{$dt->tittle}}</a></h3>
-                                <p>{!!$dt->summary!!}</p>
+                                <p>{!!$summarytitle!!}</p>
                                 <a class="soft-f-more" href="#">Chi tiết</a>
                             </div>
                         </div>
@@ -88,20 +99,22 @@
                                 </div>
                             </div>
                         </div>
-                        @foreach($data['aboutService'] as $dt)
+                        
                         <div class="skill-progress-bar">
+                        @foreach($data['aboutService'] as $dt)
                             <div class="skill-set-percent dio-headline">
                                 <h4>{{$dt->tittle}}</h4>
                                 <div class="progress">
                                     <div class="progress-bar" data-percent="{!!$dt->summary!!}"></div>
                                 </div>
                             </div>
-
+                        @endforeach
+                        
                         </div>
                         <!-- <div class="dia-exp-btn text-center">
                             <a href="#">Our Team</a>
                         </div> -->
-                        @endforeach
+                        
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 wow fadeFromLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
